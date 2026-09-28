@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic English Beginner - Nouns Exam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paletteLightPink: '#FCE7F3',
+            paletteSoftPink: '#FBCFE8',
+            paletteMagenta: '#DB2777',
+            paletteDeepPink: '#BE185D',
+            paletteYellow: '#FEF08A',
+            paletteSoftYellow: '#FEF9C3',
+            paletteRose: '#F43F5E',
+            paletteAccent: '#8B5CF6'
+          },
+          fontFamily: {
+            heading: ['Fredoka', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px; /* Base body font size 13px minimum */
+      background-color: #FAF5FF;
+    }
+    .card-shadow {
+      box-shadow: 0 10px 25px -5px rgba(219, 39, 119, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+    .badge-shadow {
+      box-shadow: 0 4px 12px rgba(219, 39, 119, 0.15);
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F3E8FF;
+      border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #F472B6;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between text-[13px]">
+
+  <!-- HEADER -->
+  <header class="bg-white/90 backdrop-blur-md border-b border-rose-100 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-paletteMagenta to-rose-400 text-white flex items-center justify-center font-bold text-xl shadow-md">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div>
+          <h1 class="font-heading font-bold text-xl text-slate-900 leading-tight">Nouns Master Exam</h1>
+          <p class="text-xs text-rose-500 font-medium">Basic English Beginner Level</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-4">
+        <button id="nav-reviewer-btn" onclick="switchTab('reviewer')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 bg-rose-100 text-paletteMagenta hover:bg-rose-200">
+          <i class="fa-solid fa-book-open"></i> <span class="hidden sm:inline">Study Reviewer</span>
+        </button>
+        <button id="nav-exam-btn" onclick="switchTab('landing')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 bg-slate-100 text-slate-600 hover:bg-slate-200">
+          <i class="fa-solid fa-pen-to-square"></i> <span class="hidden sm:inline">Take Exam</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+    <!-- VIEW 1: LANDING & STUDENT REGISTRATION VIEW -->
+    <div id="view-landing" class="space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- LEFT COLUMN: STUDENT REGISTRATION FORM -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-white rounded-3xl p-6 border border-rose-100 card-shadow relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-paletteLightPink/50 rounded-full blur-2xl"></div>
+            
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-2xl bg-pink-100 text-paletteMagenta flex items-center justify-center text-xl font-bold">
+                <i class="fa-solid fa-user-pen"></i>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold font-heading text-slate-900">Student Registration</h2>
+                <p class="text-xs text-slate-500">Enter your details before taking the exam</p>
+              </div>
+            </div>
+
+            <form id="registration-form" onsubmit="handleRegistrationSubmit(event)" class="space-y-4">
+              <div>
+                <label for="student-name" class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name <span class="text-rose-500">*</span></label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                    <i class="fa-solid fa-user"></i>
+                  </span>
+                  <input type="text" id="student-name" required placeholder="e.g. John Doe" class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-paletteMagenta focus:bg-white transition">
+                </div>
+              </div>
+
+              <div>
+                <label for="student-email" class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address <span class="text-rose-500">*</span></label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                    <i class="fa-solid fa-envelope"></i>
+                  </span>
+                  <input type="email" id="student-email" required placeholder="e.g. student@example.com" class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-paletteMagenta focus:bg-white transition">
+                </div>
+              </div>
+
+              <!-- Exam Stats Summary -->
+              <div class="grid grid-cols-3 gap-2 my-4">
+                <div class="bg-purple-50 border border-purple-100 rounded-xl p-2 text-center">
+                  <span class="block text-[10px] uppercase font-bold text-purple-600">Total Items</span>
+                  <span class="text-base font-bold text-purple-900 font-heading">100</span>
+                </div>
+                <div class="bg-pink-50 border border-pink-100 rounded-xl p-2 text-center">
+                  <span class="block text-[10px] uppercase font-bold text-pink-600">Time Limit</span>
+                  <span class="text-base font-bold text-pink-900 font-heading">75 Mins</span>
+                </div>
+                <div class="bg-rose-50 border border-rose-200 rounded-xl p-2 text-center">
+                  <span class="block text-[10px] uppercase font-bold text-rose-600">Pass Mark</span>
+                  <span class="text-base font-bold text-rose-800 font-heading">75%</span>
+                </div>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 bg-paletteMagenta hover:bg-paletteDeepPink text-white font-bold rounded-xl shadow-md hover:shadow-lg transition transform active:scale-95 text-xs sm:text-sm flex items-center justify-center gap-2 font-heading">
+                <i class="fa-solid fa-play"></i> Register & Start Exam
+              </button>
+            </form>
+
+            <p class="text-[11px] text-slate-400 mt-4 text-center leading-relaxed">
+              Rules: Timer starts immediately upon clicking. 100 questions (75 minutes total). Exam results will be submitted directly upon completion.
+            </p>
+          </div>
+
+          <!-- GRAMMAR QUICK TIP CARD -->
+          <div class="bg-paletteSoftYellow/80 border-2 border-paletteYellow rounded-2xl p-4 card-shadow">
+            <div class="flex items-center gap-2 text-amber-900 font-bold text-xs mb-1 font-heading">
+              <i class="fa-solid fa-lightbulb text-amber-500 text-sm"></i> GRAMMAR QUICK TIP
+            </div>
+            <p class="text-xs text-amber-900 leading-relaxed font-medium">
+              <strong>What is a Noun?</strong><br>
+              A noun names a person (teacher), place (school), thing (pencil), or idea (love)! Pay attention to proper nouns (capitalized) vs common nouns!
+            </p>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: STUDY REVIEWER MODULES -->
+        <div class="lg:col-span-7">
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 card-shadow space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div>
+                <h2 class="text-xl font-bold text-slate-900 font-heading">Study Reviewer – Nouns Guide</h2>
+                <p class="text-xs text-slate-500">Review these short grammar rules before starting your exam!</p>
+              </div>
+              <button onclick="switchTab('reviewer')" class="text-xs font-bold text-paletteMagenta hover:underline">
+                View Full Guide <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
+                <span class="inline-block px-2 py-0.5 bg-pink-100 text-pink-700 text-[11px] font-bold rounded-md mb-1">Module 1</span>
+                <h4 class="font-bold text-xs text-slate-800">Common vs. Proper Nouns</h4>
+                <p class="text-xs text-slate-500 mt-1">General items (dog, city) vs specific names (Rover, London).</p>
+              </div>
+              <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
+                <span class="inline-block px-2 py-0.5 bg-purple-100 text-purple-700 text-[11px] font-bold rounded-md mb-1">Module 2</span>
+                <h4 class="font-bold text-xs text-slate-800">Singular & Plural Rules</h4>
+                <p class="text-xs text-slate-500 mt-1">Regular (-s, -es) and irregular plurals (child/children, mouse/mice).</p>
+              </div>
+              <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
+                <span class="inline-block px-2 py-0.5 bg-yellow-100 text-yellow-800 text-[11px] font-bold rounded-md mb-1">Module 3</span>
+                <h4 class="font-bold text-xs text-slate-800">Countable vs Uncountable</h4>
+                <p class="text-xs text-slate-500 mt-1">Items you can count (apples) vs items measured (water, advice).</p>
+              </div>
+              <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
+                <span class="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 text-[11px] font-bold rounded-md mb-1">Module 4</span>
+                <h4 class="font-bold text-xs text-slate-800">Concrete & Abstract Nouns</h4>
+                <p class="text-xs text-slate-500 mt-1">Physical senses (table, flower) vs feelings/ideas (courage, joy).</p>
+              </div>
+            </div>
+            
+            <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-100 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-list-check text-paletteMagenta text-xl"></i>
+                <div>
+                  <h4 class="text-xs font-bold text-slate-800">Ready to test your knowledge?</h4>
+                  <p class="text-xs text-slate-500">100 Multiple Choice Questions with automated submission</p>
+                </div>
+              </div>
+              <button onclick="document.getElementById('student-name').focus()" class="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition">
+                Register Above
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- VIEW 2: FULL STUDY REVIEWER VIEW -->
+    <div id="view-reviewer" class="hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 border border-slate-200 card-shadow">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-4">
+          <div>
+            <h2 class="text-2xl font-bold font-heading text-slate-900">Nouns Comprehensive Study Guide</h2>
+            <p class="text-xs text-slate-500">Curated Nouns Grammar Guide for Beginner English Students</p>
+          </div>
+          <button onclick="switchTab('landing')" class="px-5 py-2.5 bg-paletteMagenta text-white font-bold rounded-xl text-xs shadow hover:bg-paletteDeepPink transition">
+            Go To Registration <i class="fa-solid fa-arrow-right ml-1"></i>
+          </button>
+        </div>
+
+        <!-- REVIEWER MODULE CARDS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <div class="border border-pink-100 rounded-2xl p-5 bg-gradient-to-br from-white to-pink-50/30 space-y-2">
+            <div class="flex items-center gap-2 text-paletteMagenta font-bold text-sm font-heading">
+              <span class="w-6 h-6 rounded-full bg-paletteLightPink text-paletteMagenta flex items-center justify-center text-xs">1</span>
+              Common vs. Proper Nouns
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>Common Nouns:</strong> General names of people, places, or things (e.g., <em>teacher, city, book, restaurant</em>). Always lowercase unless starting a sentence.
+            </p>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>Proper Nouns:</strong> Specific names given to people, places, days, or brands (e.g., <em>Maria, Paris, Monday, Toyota</em>). <strong>Always capitalized!</strong>
+            </p>
+          </div>
+
+          <div class="border border-purple-100 rounded-2xl p-5 bg-gradient-to-br from-white to-purple-50/30 space-y-2">
+            <div class="flex items-center gap-2 text-purple-700 font-bold text-sm font-heading">
+              <span class="w-6 h-6 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-xs">2</span>
+              Singular & Plural Nouns
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>Regular Plurals:</strong> Add <em>-s</em> (cat &rarr; cats) or <em>-es</em> for words ending in -ch, -sh, -s, -x, -z (box &rarr; boxes). Words ending in consonant + y change y to <em>-ies</em> (baby &rarr; babies).
+            </p>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>Irregular Plurals:</strong> Change form or stay the same (child &rarr; <em>children</em>, man &rarr; <em>men</em>, tooth &rarr; <em>teeth</em>, sheep &rarr; <em>sheep</em>).
+            </p>
+          </div>
+
+          <div class="border border-yellow-200 rounded-2xl p-5 bg-gradient-to-br from-white to-amber-50/30 space-y-2">
+            <div class="flex items-center gap-2 text-amber-800 font-bold text-sm font-heading">
+              <span class="w-6 h-6 rounded-full bg-yellow-100 text-amber-800 flex items-center justify-center text-xs">3</span>
+              Countable vs. Uncountable Nouns
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>Countable:</strong> Items that can be counted individually (e.g., <em>one apple, two cars, three pens</em>).
+            </p>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>Uncountable (Mass):</strong> Substances, concepts, or liquids that cannot be counted directly (e.g., <em>water, rice, information, furniture, milk</em>). They take singular verbs!
+            </p>
+          </div>
+
+          <div class="border border-blue-100 rounded-2xl p-5 bg-gradient-to-br from-white to-blue-50/30 space-y-2">
+            <div class="flex items-center gap-2 text-blue-700 font-bold text-sm font-heading">
+              <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs">4</span>
+              Possessive Nouns
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Shows ownership or relationship using an apostrophe.
+            </p>
+            <ul class="text-xs text-slate-600 list-disc list-inside space-y-1">
+              <li><strong>Singular:</strong> Add <em>'s</em> (e.g., The <em>girl's</em> hat).</li>
+              <li><strong>Plural ending in S:</strong> Add only <em>'</em> (e.g., The <em>dogs'</em> toys).</li>
+              <li><strong>Irregular Plural:</strong> Add <em>'s</em> (e.g., The <em>children's</em> playground).</li>
+            </ul>
+          </div>
+
+          <div class="border border-emerald-100 rounded-2xl p-5 bg-gradient-to-br from-white to-emerald-50/30 space-y-2">
+            <div class="flex items-center gap-2 text-emerald-700 font-bold text-sm font-heading">
+              <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs">5</span>
+              Concrete vs. Abstract Nouns
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>Concrete Nouns:</strong> Things experienced with physical senses (e.g., <em>table, pizza, music, perfume</em>).
+            </p>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>Abstract Nouns:</strong> Ideas, emotions, qualities, or states of being (e.g., <em>bravery, love, freedom, intelligence</em>).
+            </p>
+          </div>
+
+          <div class="border border-rose-100 rounded-2xl p-5 bg-gradient-to-br from-white to-rose-50/30 space-y-2">
+            <div class="flex items-center gap-2 text-rose-700 font-bold text-sm font-heading">
+              <span class="w-6 h-6 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center text-xs">6</span>
+              Collective Nouns
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Words that refer to a group or collection of people, animals, or items treated as a single unit (e.g., <em>a team of players, a flock of birds, a swarm of bees</em>).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: EXAM INTERFACE -->
+    <div id="view-exam" class="hidden space-y-4">
+      
+      <!-- EXAM TOP BAR -->
+      <div class="bg-white rounded-2xl p-4 border border-rose-100 card-shadow flex flex-wrap items-center justify-between gap-4">
+        
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 bg-pink-50 px-3 py-1.5 rounded-xl border border-pink-100">
+            <i class="fa-solid fa-clock text-paletteMagenta animate-pulse"></i>
+            <span id="timer-display" class="font-heading font-bold text-lg text-slate-800">75:00</span>
+          </div>
+
+          <div class="text-xs text-slate-500 font-medium">
+            Question <span id="current-question-num" class="font-bold text-slate-800">1</span> of 100
+          </div>
+        </div>
+
+        <div class="flex-grow max-w-xs hidden md:block">
+          <div class="flex justify-between text-[11px] font-bold text-slate-400 mb-1">
+            <span>Progress</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+            <div id="progress-bar-inner" class="bg-paletteMagenta h-full w-0 transition-all duration-300"></div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <label class="flex items-center gap-2 text-xs font-semibold text-slate-600 cursor-pointer bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200">
+            <input type="checkbox" id="toggle-instant-feedback" class="rounded text-paletteMagenta focus:ring-paletteMagenta">
+            <span>Instant Feedback</span>
+          </label>
+          
+          <button onclick="confirmSubmitExam()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow transition">
+            Submit Exam
+          </button>
+        </div>
+
+      </div>
+
+      <!-- MAIN EXAM AREA: QUESTION & PALETTE -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- LEFT: QUESTION CONTENT CARD -->
+        <div class="lg:col-span-8 space-y-4">
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 card-shadow relative min-h-[380px] flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                <span id="question-category" class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full">
+                  Part 1: Common vs Proper
+                </span>
+                
+                <button id="flag-btn" onclick="toggleFlagCurrentQuestion()" class="flex items-center gap-1.5 text-xs font-bold text-slate-400 hover:text-amber-500 transition">
+                  <i class="fa-solid fa-bookmark"></i> <span id="flag-text">Flag Question</span>
+                </button>
+              </div>
+
+              <h3 id="question-text" class="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-6">
+                Loading question...
+              </h3>
+
+              <div id="options-container" class="space-y-3">
+                <!-- Options injected via JS -->
+              </div>
+            </div>
+
+            <!-- INSTANT FEEDBACK BOX -->
+            <div id="instant-feedback-box" class="hidden mt-6 p-4 rounded-2xl text-xs leading-relaxed border">
+              <div class="flex items-center gap-2 font-bold mb-1" id="feedback-title"></div>
+              <p id="feedback-text" class="text-slate-700"></p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-paletteLightPink flex-shrink-0 flex items-center justify-center text-paletteMagenta font-bold text-sm">
+                <i class="fa-solid fa-lightbulb"></i>
+              </div>
+              <p id="teacher-hint" class="text-xs text-slate-500 italic">
+                Hint: Read each option carefully before selecting your answer!
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between pt-6 border-t border-slate-100 mt-6">
+              <button id="prev-btn" onclick="prevQuestion()" class="px-4 py-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold text-xs hover:bg-slate-200 transition disabled:opacity-50">
+                <i class="fa-solid fa-chevron-left mr-1"></i> Previous
+              </button>
+              
+              <div class="flex gap-2">
+                <button id="part1-btn" onclick="jumpToQuestion(1)" class="px-3 py-1.5 bg-slate-100 text-slate-600 rounded-lg text-xs font-semibold hover:bg-slate-200">
+                  Part 1 (1-50)
+                </button>
+                <button id="part2-btn" onclick="jumpToQuestion(51)" class="px-3 py-1.5 bg-slate-100 text-slate-600 rounded-lg text-xs font-semibold hover:bg-slate-200">
+                  Part 2 (51-100)
+                </button>
+              </div>
+
+              <button id="next-btn" onclick="nextQuestion()" class="px-5 py-2.5 bg-paletteMagenta text-white rounded-xl font-bold text-xs hover:bg-paletteDeepPink transition shadow">
+                Next <i class="fa-solid fa-chevron-right ml-1"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT: QUESTION PALETTE -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="bg-white rounded-3xl p-5 border border-slate-200 card-shadow">
+            <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
+              <h3 class="font-heading font-bold text-xs sm:text-sm text-slate-900">Question Palette</h3>
+              <span id="answered-count-badge" class="text-xs font-bold text-paletteMagenta bg-pink-100 px-2 py-0.5 rounded-full">0/100</span>
+            </div>
+
+            <div class="flex items-center justify-between text-[11px] text-slate-500 mb-3 px-1">
+              <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-slate-100 border border-slate-300 inline-block"></span> Unanswered</span>
+              <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-paletteMagenta inline-block"></span> Answered</span>
+              <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-amber-400 inline-block"></span> Flagged</span>
+            </div>
+
+            <div id="palette-grid" class="grid grid-cols-5 sm:grid-cols-10 lg:grid-cols-5 gap-1.5 max-h-[380px] overflow-y-auto p-1">
+              <!-- Question buttons dynamically generated -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- VIEW 4: SCORE & SUBMISSION RESULTS -->
+    <div id="view-results" class="hidden space-y-6">
+      
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 card-shadow text-center relative overflow-hidden">
+        <div id="result-banner-bg" class="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-2xl mx-auto space-y-4">
+          
+          <div id="result-avatar" class="w-20 h-20 rounded-full mx-auto flex items-center justify-center text-4xl shadow-md bg-white border-4 border-paletteLightPink text-paletteMagenta">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+
+          <h2 id="result-title" class="text-2xl sm:text-3xl font-bold font-heading text-slate-900">
+            Exam Completed!
+          </h2>
+
+          <div class="bg-slate-50 rounded-2xl p-3 max-w-md mx-auto text-xs text-slate-600 border border-slate-200">
+            Student: <strong id="res-student-name" class="text-slate-800"></strong> | 
+            Email: <strong id="res-student-email" class="text-slate-800"></strong>
+          </div>
+
+          <!-- FORM SUBMIT SUBMISSION STATUS ALERT -->
+          <div id="submission-status-alert" class="p-3.5 rounded-2xl text-xs font-semibold flex items-center justify-center gap-2 bg-blue-50 text-blue-800 border border-blue-200">
+            <i class="fa-solid fa-spinner fa-spin"></i> Submitting results to mariaeftongga@gmail.com...
+          </div>
+
+          <!-- SCORE DISPLAY GRID -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-3">
+              <span class="text-[11px] font-bold text-slate-400 uppercase block">Total Score</span>
+              <span id="final-score" class="text-2xl font-bold text-slate-800 font-heading">0/100</span>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-3">
+              <span class="text-[11px] font-bold text-slate-400 uppercase block">Percentage</span>
+              <span id="final-percentage" class="text-2xl font-bold text-paletteMagenta font-heading">0%</span>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-3">
+              <span class="text-[11px] font-bold text-slate-400 uppercase block">Status</span>
+              <span id="final-status" class="text-lg font-bold font-heading">PASS</span>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-100 rounded-2xl p-3">
+              <span class="text-[11px] font-bold text-slate-400 uppercase block">Time Used</span>
+              <span id="final-time-used" class="text-2xl font-bold text-slate-800 font-heading">00:00</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-3 pt-4">
+            <button onclick="retakeExam()" class="px-6 py-3 bg-paletteMagenta hover:bg-paletteDeepPink text-white font-bold rounded-xl text-xs shadow-md transition font-heading">
+              <i class="fa-solid fa-rotate-right mr-1"></i> Retake Exam
+            </button>
+            <button onclick="switchTab('reviewer')" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition font-heading">
+              <i class="fa-solid fa-book-open mr-1"></i> Review Guide
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ITEM BY ITEM REVIEW SECTION -->
+      <div class="bg-white rounded-3xl p-6 border border-slate-200 card-shadow">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+          <div>
+            <h3 class="text-xl font-bold font-heading text-slate-900">Detailed Item Review</h3>
+            <p class="text-xs text-slate-500">Review all 100 questions with complete answers and hints</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="filterReview('all')" class="px-3 py-1.5 bg-slate-900 text-white text-xs font-bold rounded-lg">All (100)</button>
+            <button onclick="filterReview('incorrect')" class="px-3 py-1.5 bg-rose-100 text-rose-700 text-xs font-bold rounded-lg hover:bg-rose-200">Incorrect</button>
+          </div>
+        </div>
+
+        <div id="item-review-list" class="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+          <!-- Dynamically populated review cards -->
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-100 py-4 mt-8">
+    <div class="max-w-7xl mx-auto px-4 text-center text-xs font-semibold text-slate-600">
+      Designed and Coded by Ms. Maria
+    </div>
+  </footer>
+
+  <script>
+    const questions = [
+      { id: 1, text: "Which word is a NOUN in this sentence: 'The happy dog barked loudly.'?", options: ["happy", "dog", "barked", "loudly"], correct: 1, category: "Noun Identification", hint: "A noun names a person, place, or thing!" },
+      { id: 2, text: "Select the PROPER noun in the following list:", options: ["city", "country", "London", "river"], correct: 2, category: "Common vs Proper", hint: "Proper nouns name specific places and are capitalized!" },
+      { id: 3, text: "Which of the following is a CONCRETE noun?", options: ["freedom", "apple", "honesty", "bravery"], correct: 1, category: "Concrete vs Abstract", hint: "Concrete nouns can be seen, touched, or tasted!" },
+      { id: 4, text: "Which word is an ABSTRACT noun?", options: ["pencil", "chair", "courage", "teacher"], correct: 2, category: "Concrete vs Abstract", hint: "Abstract nouns represent ideas, feelings, or qualities!" },
+      { id: 5, text: "Identify the COLLECTIVE noun: 'A flock of birds flew over the lake.'", options: ["flock", "birds", "flew", "lake"], correct: 0, category: "Collective Nouns", hint: "Collective nouns describe a group of individuals!" },
+      { id: 6, text: "Which noun is UNCOUNTABLE?", options: ["car", "water", "banana", "book"], correct: 1, category: "Count vs Uncount", hint: "Uncountable nouns cannot be counted as separate units!" },
+      { id: 7, text: "Choose the correct PLURAL form of 'child':", options: ["childs", "children", "childes", "childrens"], correct: 1, category: "Plural Nouns", hint: "Child is an irregular noun in plural form!" },
+      { id: 8, text: "Which sentence contains a PROPER noun?", options: ["I love eating pizza.", "My sister lives in Paris.", "The boy bought a bicycle.", "She reads a magazine."], correct: 1, category: "Common vs Proper", hint: "Look for the capitalized specific location name!" },
+      { id: 9, text: "What is the correct possessive form for one teacher?", options: ["teachers'", "teacher's", "teachers", "teacher's-"], correct: 1, category: "Possessive Nouns", hint: "Singular possessive adds apostrophe + s!" },
+      { id: 10, text: "Which word is NOT a noun?", options: ["happiness", "run", "hospital", "doctor"], correct: 1, category: "Noun Identification", hint: "'Run' is an action verb here!" },
+      
+      { id: 11, text: "Identify the COMMON noun: 'Teacher Maria loves teaching English.'", options: ["Teacher", "Maria", "English", "None of these"], correct: 0, category: "Common vs Proper", hint: "'Teacher' is a common role name." },
+      { id: 12, text: "Select the correct plural form of 'city':", options: ["citys", "cities", "cityes", "citiss"], correct: 1, category: "Plural Nouns", hint: "Words ending in consonant + y change y to -ies!" },
+      { id: 13, text: "Which word is a COUNTABLE noun?", options: ["information", "rice", "chair", "sugar"], correct: 2, category: "Count vs Uncount", hint: "You can count 'one chair, two chairs'!" },
+      { id: 14, text: "What type of noun is 'friendship'?", options: ["Concrete Noun", "Abstract Noun", "Proper Noun", "Collective Noun"], correct: 1, category: "Concrete vs Abstract", hint: "Friendship is a concept/feeling, not a physical object." },
+      { id: 15, text: "Identify the collective noun in: 'The committee met yesterday.'", options: ["met", "committee", "yesterday", "The"], correct: 1, category: "Collective Nouns", hint: "Committee is a group of members!" },
+      { id: 16, text: "Which of the following is a proper noun for a day of the week?", options: ["day", "today", "Friday", "tomorrow"], correct: 2, category: "Common vs Proper", hint: "Days of the week are proper nouns and capitalized!" },
+      { id: 17, text: "Choose the correct plural form of 'leaf':", options: ["leafs", "leaves", "leafes", "leavers"], correct: 1, category: "Plural Nouns", hint: "Nouns ending in -f usually change to -ves!" },
+      { id: 18, text: "Which of these is an UNCOUNTABLE noun?", options: ["milk", "glass", "cup", "bottle"], correct: 0, category: "Count vs Uncount", hint: "Liquids are uncountable mass nouns!" },
+      { id: 19, text: "Identify the abstract noun: 'Her intelligence amazed everyone.'", options: ["amazed", "intelligence", "everyone", "Her"], correct: 1, category: "Concrete vs Abstract", hint: "Intelligence is a quality that cannot be touched." },
+      { id: 20, text: "Which phrase uses a possessive noun correctly?", options: ["The dogs bone", "The dog's bone", "The dogs's bone", "The dog bone's"], correct: 1, category: "Possessive Nouns", hint: "A single dog owning a bone needs 's!" },
+
+      { id: 21, text: "Select the proper noun: 'We visited the Golden Gate Bridge.'", options: ["visited", "Golden Gate Bridge", "We", "None"], correct: 1, category: "Common vs Proper", hint: "It is a specific named landmark!" },
+      { id: 22, text: "What is the plural of 'tooth'?", options: ["tooths", "teeth", "toothes", "teeths"], correct: 1, category: "Plural Nouns", hint: "Irregular vowel change o-o to e-e!" },
+      { id: 23, text: "Which noun is concrete?", options: ["joy", "pizza", "truth", "patience"], correct: 1, category: "Concrete vs Abstract", hint: "Pizza can be tasted and touched!" },
+      { id: 24, text: "Identify the collective noun: 'A herd of cows grazed in the field.'", options: ["cows", "field", "herd", "grazed"], correct: 2, category: "Collective Nouns", hint: "A herd is a group of cattle." },
+      { id: 25, text: "Which item is COUNTABLE?", options: ["furniture", "advice", "coin", "money"], correct: 2, category: "Count vs Uncount", hint: "You can count individual coins!" },
+      { id: 26, text: "Choose the proper noun: 'My favorite month is December.'", options: ["favorite", "month", "December", "My"], correct: 2, category: "Common vs Proper", hint: "Specific months are proper nouns." },
+      { id: 27, text: "What is the plural of 'box'?", options: ["boxs", "boxes", "boxies", "boxen"], correct: 1, category: "Plural Nouns", hint: "Words ending in -x take -es in plural!" },
+      { id: 28, text: "Which word is an abstract noun?", options: ["hope", "star", "flower", "sun"], correct: 0, category: "Concrete vs Abstract", hint: "Hope is a feeling/emotion." },
+      { id: 29, text: "Identify the noun in: 'She plays the piano nicely.'", options: ["plays", "piano", "nicely", "she"], correct: 1, category: "Noun Identification", hint: "Piano is a musical instrument (thing)." },
+      { id: 30, text: "Select the uncountable noun:", options: ["pencil", "homework", "book", "desk"], correct: 1, category: "Count vs Uncount", hint: "'Homework' is treated as an uncountable concept." },
+
+      { id: 31, text: "Which plural form is correct for 'person'?", options: ["persons", "people", "peoples", "persones"], correct: 1, category: "Plural Nouns", hint: "People is the standard plural form for person." },
+      { id: 32, text: "Which is a Proper Noun?", options: ["planet", "Mars", "star", "galaxy"], correct: 1, category: "Common vs Proper", hint: "Mars is a specific planet name!" },
+      { id: 33, text: "What type of noun is 'team' in 'Our team won the game'?", options: ["Collective Noun", "Abstract Noun", "Proper Noun", "Uncountable Noun"], correct: 0, category: "Collective Nouns", hint: "A team is a group of players." },
+      { id: 34, text: "Which noun is abstract?", options: ["desk", "wisdom", "shoe", "ring"], correct: 1, category: "Concrete vs Abstract", hint: "Wisdom is an intellectual trait." },
+      { id: 35, text: "Select the correct plural of 'mouse':", options: ["mouses", "mice", "mices", "meese"], correct: 1, category: "Plural Nouns", hint: "Irregular noun mouse becomes mice!" },
+      { id: 36, text: "Which of the following is COUNTABLE?", options: ["sand", "bread", "orange", "butter"], correct: 2, category: "Count vs Uncount", hint: "You can count individual oranges!" },
+      { id: 37, text: "Identify the possessive noun: 'The cats' toys are everywhere.'", options: ["cats'", "toys", "everywhere", "are"], correct: 0, category: "Possessive Nouns", hint: "Look for the apostrophe indicating ownership!" },
+      { id: 38, text: "Which word is a common noun for a person?", options: ["Maria", "Doctor", "London", "Nike"], correct: 1, category: "Common vs Proper", hint: "'Doctor' is a general title/profession." },
+      { id: 39, text: "What is the plural of 'bus'?", options: ["buss", "buses", "busies", "bussing"], correct: 1, category: "Plural Nouns", hint: "Add -es to words ending in -s." },
+      { id: 40, text: "Which word is a concrete noun?", options: ["music", "beauty", "kindness", "peace"], correct: 0, category: "Concrete vs Abstract", hint: "You can hear music with your ears!" },
+
+      { id: 41, text: "Find the noun: 'They built a large bridge over the river.' (Select bridge)", options: ["built", "large", "bridge", "over"], correct: 2, category: "Noun Identification", hint: "Bridge is a physical structure (thing)." },
+      { id: 42, text: "Which is an uncountable noun?", options: ["egg", "cheese", "potato", "onion"], correct: 1, category: "Count vs Uncount", hint: "Cheese is considered a mass uncountable noun." },
+      { id: 43, text: "Identify the collective noun: 'A swarm of bees surrounded the hive.'", options: ["bees", "swarm", "hive", "surrounded"], correct: 1, category: "Collective Nouns", hint: "Swarm refers to a group of insects!" },
+      { id: 44, text: "Choose the correct plural form of 'man':", options: ["mans", "men", "menes", "mens"], correct: 1, category: "Plural Nouns", hint: "Man changes to men in plural." },
+      { id: 45, text: "Which of these is a proper noun?", options: ["teacher", "school", "Harvard University", "classroom"], correct: 2, category: "Common vs Proper", hint: "Harvard University is a specific proper institution." },
+      { id: 46, text: "Select the abstract noun:", options: ["clock", "time", "watch", "battery"], correct: 1, category: "Concrete vs Abstract", hint: "Time is a concept that cannot be touched." },
+      { id: 47, text: "What is the possessive form for multiple girls?", options: ["girls's", "girls'", "girl's", "girles'"], correct: 1, category: "Possessive Nouns", hint: "Plural nouns ending in s take only an apostrophe at the end!" },
+      { id: 48, text: "Which is a countable noun?", options: ["soup", "rain", "spoon", "tea"], correct: 2, category: "Count vs Uncount", hint: "You can count spoons!" },
+      { id: 49, text: "What is the plural of 'watch'?", options: ["watchs", "watches", "watchies", "watches'"], correct: 1, category: "Plural Nouns", hint: "Words ending in -ch add -es!" },
+      { id: 50, text: "Which noun represents an idea or feeling?", options: ["Abstract Noun", "Concrete Noun", "Proper Noun", "Collective Noun"], correct: 0, category: "Concrete vs Abstract", hint: "Abstract nouns encompass ideas and feelings!" },
+
+      { id: 51, text: "Fill in the blank: 'There are three _____ on the table.'", options: ["box", "boxes", "boxs", "boxies"], correct: 1, category: "Plural Rules", hint: "Use the plural form of box after 'three'." },
+      { id: 52, text: "Complete the sentence: 'She drank a glass of _____.'", options: ["waters", "water", "a water", "many waters"], correct: 1, category: "Uncountable Noun Usage", hint: "Water is uncountable and does not take -s." },
+      { id: 53, text: "Which sentence uses capitalization correctly for proper nouns?", options: ["i live in new york.", "I live in New York.", "I live in new York.", "i Live in New york."], correct: 1, category: "Capitalization Rules", hint: "Capitalize both 'I' and both parts of 'New York'." },
+      { id: 54, text: "Choose the correct possessive form: 'This is _____ laptop.'", options: ["Maria's", "Marias'", "Marias", "Maria"], correct: 0, category: "Possessive Nouns", hint: "Singular proper name + 's for ownership." },
+      { id: 55, text: "Fill in the blank: 'A _____ of sheep was grazing on the hill.'", options: ["flock", "pack", "school", "pride"], correct: 0, category: "Collective Nouns", hint: "A group of sheep is called a flock!" },
+      { id: 56, text: "Which sentence is grammatically correct?", options: ["I have many knowledges.", "I have much knowledge.", "I have a knowledge.", "I have many knowledge."], correct: 1, category: "Uncountable Noun Usage", hint: "'Knowledge' is uncountable, use 'much' or 'a lot of'." },
+      { id: 57, text: "Select the correct plural form of 'knife':", options: ["knifes", "knives", "knifess", "knivs"], correct: 1, category: "Plural Rules", hint: "Words ending in -fe change to -ves." },
+      { id: 58, text: "Fill in the blank: 'The _____ room is clean and tidy.'", options: ["childrens'", "children's", "childs'", "childrens"], correct: 1, category: "Possessive Rules", hint: "Irregular plural 'children' + 's." },
+      { id: 59, text: "Which quantifier goes with an UNCOUNTABLE noun like 'sugar'?", options: ["many", "a few", "much", "several"], correct: 2, category: "Quantifiers with Nouns", hint: "Use 'much' or 'some' with uncountable nouns!" },
+      { id: 60, text: "Identify the compound noun: 'We bought a new sunflower for the garden.'", options: ["bought", "new", "sunflower", "garden"], correct: 2, category: "Compound Nouns", hint: "Sun + flower forms a compound noun!" },
+
+      { id: 61, text: "Fill in the blank: 'He ate two _____ for breakfast.'", options: ["sandwich", "sandwiches", "sandwichs", "sandwichies"], correct: 1, category: "Plural Rules", hint: "Words ending in -ch take -es." },
+      { id: 62, text: "Choose the correct collective noun: 'A _____ of wolves hunted in the forest.'", options: ["flock", "herd", "pack", "swarm"], correct: 2, category: "Collective Nouns", hint: "Wolves form a pack!" },
+      { id: 63, text: "Which noun stays the SAME in singular and plural form?", options: ["cat", "sheep", "dog", "bird"], correct: 1, category: "Irregular Plurals", hint: "One sheep, two sheep!" },
+      { id: 64, text: "Complete the sentence: 'She showed great _____ when helping others.'", options: ["kindness", "kindnesses", "kind", "kindly"], correct: 0, category: "Abstract Nouns", hint: "Kindness is an abstract noun quality." },
+      { id: 65, text: "Which sentence shows plural possessive correctly?", options: ["The boys' basketball team won.", "The boy's basketball team won.", "The boyses basketball team won.", "The boys basketball team won."], correct: 0, category: "Possessive Rules", hint: "Plural 'boys' + apostrophe." },
+      { id: 66, text: "Fill in the blank: 'How _____ apples did you buy?'", options: ["much", "many", "little", "amount of"], correct: 1, category: "Quantifiers with Nouns", hint: "Use 'many' with countable plural nouns like apples!" },
+      { id: 67, text: "What is the plural of 'fish' (referring to a group of the same species)?", options: ["fishes", "fish", "fishies", "fishs"], correct: 1, category: "Irregular Plurals", hint: "Fish usually remains 'fish' in general plural form." },
+      { id: 68, text: "Which of the following is a proper noun for a holiday?", options: ["holiday", "vacation", "Christmas", "festival"], correct: 2, category: "Common vs Proper", hint: "Christmas is a specific named holiday." },
+      { id: 69, text: "Choose the sentence with correct noun agreement:", options: ["The cat catch a mouse.", "The cats catches a mouse.", "The cat catches a mouse.", "The cats catched a mouse."], correct: 2, category: "Noun Verb Agreement", hint: "Singular subject 'cat' takes singular verb 'catches'." },
+      { id: 70, text: "What is the plural of 'goose'?", options: ["gooses", "geese", "goosies", "geeses"], correct: 1, category: "Irregular Plurals", hint: "Goose becomes geese!" },
+
+      { id: 71, text: "Complete: 'Could you give me some _____, please?'", options: ["advices", "advice", "an advice", "many advices"], correct: 1, category: "Uncountable Noun Usage", hint: "'Advice' is an uncountable noun in English!" },
+      { id: 72, text: "Select the collective noun for lions: 'A _____ of lions rested in the shade.'", options: ["pack", "pride", "herd", "flock"], correct: 1, category: "Collective Nouns", hint: "A group of lions is called a pride." },
+      { id: 73, text: "Which word is a singular noun?", options: ["teeth", "children", "foot", "feet"], correct: 2, category: "Singular vs Plural", hint: "Foot is singular; feet is plural." },
+      { id: 74, text: "Identify the abstract noun in: 'Honesty is the best policy.'", options: ["Honesty", "best", "policy", "is"], correct: 0, category: "Abstract Nouns", hint: "Honesty is a moral quality." },
+      { id: 75, text: "Fill in the blank: 'Look at those two _____ in the sky!'", options: ["bird", "birds", "birdes", "birdies'"], correct: 1, category: "Plural Rules", hint: "Regular plural adds -s." },
+      { id: 76, text: "Choose the correct possessive form: 'The _____ tails were wagging happily.'", options: ["dog's", "dogs'", "dogs's", "doges'"], correct: 1, category: "Possessive Rules", hint: "Multiple dogs sharing multiple tails!" },
+      { id: 77, text: "Which noun is uncountable?", options: ["music", "song", "note", "instrument"], correct: 0, category: "Count vs Uncount", hint: "Music is uncountable; songs are countable." },
+      { id: 78, text: "What is the plural form of 'city'?", options: ["citys", "cities", "citiss", "cityes"], correct: 1, category: "Plural Rules", hint: "Change -y to -ies." },
+      { id: 79, text: "Identify the common noun: 'Dr. Smith works at the local hospital.'", options: ["Dr. Smith", "hospital", "works", "local"], correct: 1, category: "Common vs Proper", hint: "'Hospital' is a general place name." },
+      { id: 80, text: "Select the plural form of 'lady':", options: ["ladys", "ladies", "ladyes", "ladis"], correct: 1, category: "Plural Rules", hint: "Lady becomes ladies." },
+
+      { id: 81, text: "Which sentence uses an abstract noun correctly?", options: ["She felt a lot of anger.", "She felt two angers.", "She felt many angers.", "She felt an anger."], correct: 0, category: "Abstract Nouns", hint: "Anger is an uncountable abstract emotion." },
+      { id: 82, text: "Choose the correct collective noun for fish: 'A _____ of fish swam by.'", options: ["school", "herd", "pack", "team"], correct: 0, category: "Collective Nouns", hint: "A group of swimming fish is a school!" },
+      { id: 83, text: "What is the possessive form of 'James'?", options: ["James's", "James'", "Both James's and James' are acceptable", "Jameses"], correct: 2, category: "Possessive Rules", hint: "Both James's and James' are commonly accepted in English!" },
+      { id: 84, text: "Fill in the blank: 'We need to buy new _____ for the living room.'", options: ["furnitures", "furniture", "a furniture", "furnitures'"], correct: 1, category: "Uncountable Noun Usage", hint: "Furniture is an uncountable mass noun." },
+      { id: 85, text: "Identify the concrete noun: 'The aroma of fresh bread filled the room.'", options: ["bread", "aroma", "filled", "fresh"], correct: 0, category: "Concrete vs Abstract", hint: "Bread is a physical food item." },
+      { id: 86, text: "What is the plural form of 'woman'?", options: ["womans", "women", "womens", "womenes"], correct: 1, category: "Irregular Plurals", hint: "Woman becomes women." },
+      { id: 87, text: "Which quantifier fits countable nouns?", options: ["a few", "a little", "much", "amount of"], correct: 0, category: "Quantifiers with Nouns", hint: "Use 'a few' with countable plurals (e.g., a few books)." },
+      { id: 88, text: "Select the proper noun: 'My favorite restaurant is Luigi's Pasta.'", options: ["restaurant", "favorite", "Luigi's Pasta", "pasta"], correct: 2, category: "Common vs Proper", hint: "Luigi's Pasta is the specific brand/restaurant name." },
+      { id: 89, text: "Which noun is singular?", options: ["mice", "oxen", "ox", "geese"], correct: 2, category: "Singular vs Plural", hint: "Ox is singular; oxen is plural." },
+      { id: 90, text: "What is the plural of 'potato'?", options: ["potatos", "potatoes", "potaties", "potatos'"], correct: 1, category: "Plural Rules", hint: "Potato adds -oes in plural form." },
+
+      { id: 91, text: "Fill in the blank: 'The _____ room is on the second floor.'", options: ["mens'", "men's", "mens", "man's"], correct: 1, category: "Possessive Rules", hint: "Irregular plural 'men' + 's." },
+      { id: 92, text: "Which word represents a group of ships?", options: ["fleet", "flock", "pack", "herd"], correct: 0, category: "Collective Nouns", hint: "A fleet of ships!" },
+      { id: 93, text: "Choose the proper noun: 'We live near the Amazon River.'", options: ["river", "Amazon River", "live", "near"], correct: 1, category: "Common vs Proper", hint: "Amazon River is a specific geographical feature name." },
+      { id: 94, text: "What is the plural of 'hero'?", options: ["heros", "heroes", "heroies", "heross"], correct: 1, category: "Plural Rules", hint: "Hero becomes heroes." },
+      { id: 95, text: "Which noun is abstract?", options: ["loyalty", "dog", "leash", "park"], correct: 0, category: "Abstract Nouns", hint: "Loyalty is a value/concept." },
+      { id: 96, text: "Fill in the blank: 'There is too _____ traffic on the highway today.'", options: ["many", "much", "few", "several"], correct: 1, category: "Quantifiers with Nouns", hint: "Traffic is an uncountable noun, use 'much'!" },
+      { id: 97, text: "What is the possessive form for a single cat?", options: ["cat's", "cats'", "cats", "cat's-"], correct: 0, category: "Possessive Rules", hint: "Singular noun + 's." },
+      { id: 98, text: "Select the countable noun:", options: ["butter", "jam", "pancake", "honey"], correct: 2, category: "Count vs Uncount", hint: "Pancake is countable (one pancake, two pancakes)." },
+      { id: 99, text: "Which sentence contains a collective noun?", options: ["The crowd cheered loudly.", "The girl ran fast.", "The sun is shining.", "A blue car parked outside."], correct: 0, category: "Collective Nouns", hint: "'Crowd' is a collective noun for a group of people!" },
+      { id: 100, text: "Congratulations on reaching question 100! What type of noun is 'English Exam'?", options: ["Common Noun", "Proper Noun", "Abstract Noun", "Uncountable Noun"], correct: 1, category: "Common vs Proper", hint: "Specific capitalized title name!" }
+    ];
+
+    let studentName = "";
+    let studentEmail = "";
+    let currentQuestionIndex = 0;
+    let userAnswers = new Array(questions.length).fill(null);
+    let flaggedQuestions = new Array(questions.length).fill(false);
+    let timerSeconds = 4500; // 75 minutes
+    let timerInterval = null;
+    let examStartTime = null;
+    let examEndTime = null;
+
+    function switchTab(tabName) {
+      document.getElementById('view-landing').classList.add('hidden');
+      document.getElementById('view-reviewer').classList.add('hidden');
+      document.getElementById('view-exam').classList.add('hidden');
+      document.getElementById('view-results').classList.add('hidden');
+
+      document.getElementById('nav-reviewer-btn').className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 " + (tabName === 'reviewer' ? "bg-rose-100 text-paletteMagenta" : "bg-slate-100 text-slate-600 hover:bg-slate-200");
+      document.getElementById('nav-exam-btn').className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 " + (tabName === 'exam' || tabName === 'landing' ? "bg-rose-100 text-paletteMagenta" : "bg-slate-100 text-slate-600 hover:bg-slate-200");
+
+      if (tabName === 'landing') document.getElementById('view-landing').classList.remove('hidden');
+      else if (tabName === 'reviewer') document.getElementById('view-reviewer').classList.remove('hidden');
+      else if (tabName === 'exam') document.getElementById('view-exam').classList.remove('hidden');
+      else if (tabName === 'results') document.getElementById('view-results').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleRegistrationSubmit(event) {
+      event.preventDefault();
+      studentName = document.getElementById('student-name').value.trim();
+      studentEmail = document.getElementById('student-email').value.trim();
+
+      if (!studentName || !studentEmail) {
+        alert("Please enter both your Name and Email address.");
+        return;
+      }
+
+      startExamPrep();
+    }
+
+    function startExamPrep() {
+      currentQuestionIndex = 0;
+      userAnswers = new Array(questions.length).fill(null);
+      flaggedQuestions = new Array(questions.length).fill(false);
+      timerSeconds = 4500;
+      examStartTime = new Date();
+
+      renderPaletteGrid();
+      renderCurrentQuestion();
+      startTimer();
+      switchTab('exam');
+    }
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        timerSeconds--;
+        updateTimerDisplay();
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert("Time is up! Your exam will now be submitted automatically.");
+          submitExam();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const minutes = Math.floor(timerSeconds / 60);
+      const seconds = timerSeconds % 60;
+      const displayStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      document.getElementById('timer-display').innerText = displayStr;
+    }
+
+    function renderCurrentQuestion() {
+      const q = questions[currentQuestionIndex];
+      
+      document.getElementById('current-question-num').innerText = q.id;
+      document.getElementById('question-category').innerText = `Q${q.id} • ${q.category}`;
+      document.getElementById('question-text').innerText = `${q.id}. ${q.text}`;
+      document.getElementById('teacher-hint').innerHTML = `<strong>Hint:</strong> ${q.hint}`;
+
+      const isFlagged = flaggedQuestions[currentQuestionIndex];
+      document.getElementById('flag-text').innerText = isFlagged ? "Flagged" : "Flag Question";
+      document.getElementById('flag-btn').className = `flex items-center gap-1.5 text-xs font-bold transition ${isFlagged ? 'text-amber-500' : 'text-slate-400 hover:text-amber-500'}`;
+
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+
+      const selectedOption = userAnswers[currentQuestionIndex];
+
+      q.options.forEach((optionText, idx) => {
+        const isSelected = selectedOption === idx;
+        
+        let optionClass = "w-full p-4 rounded-2xl border text-left text-xs sm:text-sm font-semibold transition flex items-center justify-between cursor-pointer ";
+        if (isSelected) {
+          optionClass += "border-paletteMagenta bg-pink-50/80 text-paletteMagenta shadow-sm";
+        } else {
+          optionClass += "border-slate-200 bg-white text-slate-700 hover:border-pink-200 hover:bg-slate-50";
+        }
+
+        const optionButton = document.createElement('button');
+        optionButton.className = optionClass;
+        optionButton.onclick = () => selectOption(idx);
+        
+        const optionLabel = String.fromCharCode(65 + idx);
+        
+        optionButton.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 rounded-xl ${isSelected ? 'bg-paletteMagenta text-white' : 'bg-slate-100 text-slate-600'} flex items-center justify-center font-bold text-xs">${optionLabel}</span>
+            <span>${optionText}</span>
+          </div>
+          ${isSelected ? '<i class="fa-solid fa-circle-check text-paletteMagenta text-lg"></i>' : ''}
+        `;
+        
+        optionsContainer.appendChild(optionButton);
+      });
+
+      document.getElementById('prev-btn').disabled = (currentQuestionIndex === 0);
+      document.getElementById('next-btn').innerHTML = (currentQuestionIndex === questions.length - 1) 
+        ? 'Finish <i class="fa-solid fa-check ml-1"></i>' 
+        : 'Next <i class="fa-solid fa-chevron-right ml-1"></i>';
+
+      handleInstantFeedback();
+      updatePaletteHighlights();
+      updateProgressBar();
+    }
+
+    function selectOption(optionIndex) {
+      userAnswers[currentQuestionIndex] = optionIndex;
+      renderCurrentQuestion();
+      renderPaletteGrid();
+    }
+
+    function handleInstantFeedback() {
+      const isInstantEnabled = document.getElementById('toggle-instant-feedback').checked;
+      const feedbackBox = document.getElementById('instant-feedback-box');
+      const selectedOption = userAnswers[currentQuestionIndex];
+
+      if (isInstantEnabled && selectedOption !== null) {
+        feedbackBox.classList.remove('hidden');
+        const q = questions[currentQuestionIndex];
+        const isCorrect = (selectedOption === q.correct);
+
+        if (isCorrect) {
+          feedbackBox.className = "mt-6 p-4 rounded-2xl text-xs leading-relaxed border border-emerald-200 bg-emerald-50 text-emerald-900";
+          document.getElementById('feedback-title').innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> Correct!`;
+          document.getElementById('feedback-text').innerText = `'${q.options[q.correct]}' is the correct answer.`;
+        } else {
+          feedbackBox.className = "mt-6 p-4 rounded-2xl text-xs leading-relaxed border border-rose-200 bg-rose-50 text-rose-900";
+          document.getElementById('feedback-title').innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600"></i> Incorrect`;
+          document.getElementById('feedback-text').innerText = `The correct answer is '${q.options[q.correct]}'. ${q.hint}`;
+        }
+      } else {
+        feedbackBox.classList.add('hidden');
+      }
+    }
+
+    function toggleFlagCurrentQuestion() {
+      flaggedQuestions[currentQuestionIndex] = !flaggedQuestions[currentQuestionIndex];
+      renderCurrentQuestion();
+      renderPaletteGrid();
+    }
+
+    function nextQuestion() {
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        renderCurrentQuestion();
+      } else {
+        confirmSubmitExam();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderCurrentQuestion();
+      }
+    }
+
+    function jumpToQuestion(qNum) {
+      currentQuestionIndex = qNum - 1;
+      renderCurrentQuestion();
+    }
+
+    function renderPaletteGrid() {
+      const paletteContainer = document.getElementById('palette-grid');
+      paletteContainer.innerHTML = '';
+
+      questions.forEach((q, idx) => {
+        const isAnswered = (userAnswers[idx] !== null);
+        const isFlagged = flaggedQuestions[idx];
+        const isCurrent = (idx === currentQuestionIndex);
+
+        let btnClass = "w-full aspect-square rounded-xl text-xs font-bold flex items-center justify-center transition relative ";
+        
+        if (isCurrent) btnClass += "ring-2 ring-slate-900 ring-offset-1 ";
+
+        if (isFlagged) {
+          btnClass += "bg-amber-400 text-white ";
+        } else if (isAnswered) {
+          btnClass += "bg-paletteMagenta text-white ";
+        } else {
+          btnClass += "bg-slate-100 text-slate-600 hover:bg-slate-200 ";
+        }
+
+        const btn = document.createElement('button');
+        btn.className = btnClass;
+        btn.innerText = q.id;
+        btn.onclick = () => jumpToQuestion(q.id);
+
+        if (isFlagged) {
+          const flagDot = document.createElement('span');
+          flagDot.className = "absolute -top-1 -right-1 w-2.5 h-2.5 bg-rose-500 rounded-full border border-white";
+          btn.appendChild(flagDot);
+        }
+
+        paletteContainer.appendChild(btn);
+      });
+
+      const answeredCount = userAnswers.filter(a => a !== null).length;
+      document.getElementById('answered-count-badge').innerText = `${answeredCount}/100`;
+    }
+
+    function updatePaletteHighlights() {
+      renderPaletteGrid();
+    }
+
+    function updateProgressBar() {
+      const answeredCount = userAnswers.filter(a => a !== null).length;
+      const percentage = Math.round((answeredCount / questions.length) * 100);
+      document.getElementById('progress-bar-inner').style.width = `${percentage}%`;
+      document.getElementById('progress-percent').innerText = `${percentage}%`;
+    }
+
+    function confirmSubmitExam() {
+      const answeredCount = userAnswers.filter(a => a !== null).length;
+      const unanswered = questions.length - answeredCount;
+      
+      let confirmMsg = `Are you sure you want to submit your exam?\n\nYou have answered ${answeredCount} of 100 questions.`;
+      if (unanswered > 0) {
+        confirmMsg += `\nWarning: You have ${unanswered} unanswered questions!`;
+      }
+
+      if (window.confirm(confirmMsg)) {
+        submitExam();
+      }
+    }
+
+    function submitExam() {
+      clearInterval(timerInterval);
+      examEndTime = new Date();
+      
+      let correctCount = 0;
+      const answersSummaryList = [];
+
+      questions.forEach((q, idx) => {
+        const selected = userAnswers[idx];
+        const isCorrect = (selected === q.correct);
+        if (isCorrect) correctCount++;
+
+        const userAnsLabel = (selected !== null) ? `${String.fromCharCode(65 + selected)} (${q.options[selected]})` : "No Answer";
+        const correctAnsLabel = `${String.fromCharCode(65 + q.correct)} (${q.options[q.correct]})`;
+        answersSummaryList.push(`Q${q.id}: ${isCorrect ? '✓ CORRECT' : '✗ WRONG'} | Student Answer: ${userAnsLabel} | Correct: ${correctAnsLabel}`);
+      });
+
+      const percentage = Math.round((correctCount / questions.length) * 100);
+      const isPassed = percentage >= 75;
+
+      const timeDiffSeconds = Math.floor((examEndTime - examStartTime) / 1000);
+      const minsUsed = Math.floor(timeDiffSeconds / 60);
+      const secsUsed = timeDiffSeconds % 60;
+      const timeUsedStr = `${minsUsed}m ${secsUsed}s`;
+
+      document.getElementById('res-student-name').innerText = studentName || 'Not Provided';
+      document.getElementById('res-student-email').innerText = studentEmail || 'Not Provided';
+      document.getElementById('final-score').innerText = `${correctCount}/100`;
+      document.getElementById('final-percentage').innerText = `${percentage}%`;
+      document.getElementById('final-time-used').innerText = timeUsedStr;
+
+      const statusElem = document.getElementById('final-status');
+      if (isPassed) {
+        statusElem.innerText = "PASSED";
+        statusElem.className = "text-2xl font-bold font-heading text-emerald-600";
+        document.getElementById('result-title').innerText = "Congratulations! You Passed!";
+      } else {
+        statusElem.innerText = "FAILED";
+        statusElem.className = "text-2xl font-bold font-heading text-rose-600";
+        document.getElementById('result-title').innerText = "Exam Completed";
+      }
+
+      renderDetailedReviewCards('all');
+      switchTab('results');
+
+      // Dispatch FormSubmit AJAX Request directly to mariaeftongga@gmail.com
+      sendFormSubmitPayload(studentName, studentEmail, correctCount, percentage, isPassed ? 'PASSED' : 'FAILED', timeUsedStr, answersSummaryList);
+    }
+
+    function sendFormSubmitPayload(name, email, score, percent, status, timeElapsed, summary) {
+      const statusAlert = document.getElementById('submission-status-alert');
+      statusAlert.className = "p-3.5 rounded-2xl text-xs font-semibold flex items-center justify-center gap-2 bg-blue-50 text-blue-800 border border-blue-200";
+      statusAlert.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Submitting exam results to mariaeftongga@gmail.com...`;
+
+      const payload = {
+        _subject: `Nouns Exam Results - ${name} (${score}/100 - ${percent}%)`,
+        _template: "table",
+        _captcha: "false",
+        "Student Name": name,
+        "Student Email": email,
+        "Score": `${score}/100`,
+        "Percentage": `${percent}%`,
+        "Exam Status": status,
+        "Time Elapsed": timeElapsed,
+        "Submission Date": new Date().toLocaleString(),
+        "Answers Breakdown": summary.join("\n")
+      };
+
+      fetch("https://formsubmit.co/ajax/mariaeftongga@gmail.com", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => response.json())
+      .then(data => {
+        statusAlert.className = "p-3.5 rounded-2xl text-xs font-semibold flex items-center justify-center gap-2 bg-emerald-50 text-emerald-800 border border-emerald-200";
+        statusAlert.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> Exam results submitted successfully to mariaeftongga@gmail.com!`;
+      })
+      .catch(error => {
+        console.error("Submission error:", error);
+        statusAlert.className = "p-3.5 rounded-2xl text-xs font-semibold flex items-center justify-center gap-2 bg-amber-50 text-amber-900 border border-amber-200";
+        statusAlert.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Results generated. (Notice: FormSubmit notification attempted).`;
+      });
+    }
+
+    function renderDetailedReviewCards(filter) {
+      const reviewList = document.getElementById('item-review-list');
+      reviewList.innerHTML = '';
+
+      questions.forEach((q, idx) => {
+        const userAnsIdx = userAnswers[idx];
+        const isCorrect = (userAnsIdx === q.correct);
+
+        if (filter === 'incorrect' && isCorrect) return;
+
+        const card = document.createElement('div');
+        card.className = `p-4 sm:p-5 rounded-2xl border ${isCorrect ? 'border-emerald-100 bg-emerald-50/30' : 'border-rose-100 bg-rose-50/30'} space-y-3`;
+
+        const userChoiceText = (userAnsIdx !== null) ? q.options[userAnsIdx] : 'No Answer Selected';
+        const correctChoiceText = q.options[q.correct];
+
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full ${isCorrect ? 'bg-emerald-500' : 'bg-rose-500'} text-white text-xs font-bold flex items-center justify-center">
+                ${q.id}
+              </span>
+              <span class="text-xs font-bold text-slate-500">${q.category}</span>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+              ${isCorrect ? 'Correct' : 'Incorrect'}
+            </span>
+          </div>
+
+          <p class="text-sm font-bold text-slate-800">${q.text}</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <div class="p-2.5 rounded-xl border ${isCorrect ? 'bg-white border-emerald-200 text-emerald-900' : 'bg-white border-rose-200 text-rose-900'}">
+              <span class="text-[10px] uppercase font-bold block opacity-70">Your Answer:</span>
+              <span class="font-bold">${userChoiceText}</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white border border-emerald-200 text-emerald-900">
+              <span class="text-[10px] uppercase font-bold block text-emerald-600">Correct Answer:</span>
+              <span class="font-bold">${correctChoiceText}</span>
+            </div>
+          </div>
+
+          <div class="bg-white/80 p-3 rounded-xl border border-slate-100 text-xs text-slate-600 flex items-start gap-2">
+            <i class="fa-solid fa-circle-info text-paletteMagenta mt-0.5"></i>
+            <div>
+              <strong class="text-slate-800">Explanation:</strong> ${q.hint}
+            </div>
+          </div>
+        `;
+
+        reviewList.appendChild(card);
+      });
+    }
+
+    function filterReview(type) {
+      renderDetailedReviewCards(type);
+    }
+
+    function retakeExam() {
+      switchTab('landing');
+    }
+
+    document.getElementById('toggle-instant-feedback').addEventListener('change', () => {
+      handleInstantFeedback();
+    });
+
+    window.onload = function() {
+      switchTab('landing');
+    };
+  </script>
+</body>
+</html>
